@@ -62,7 +62,7 @@ public class Uzbek implements Language {
 
     @Override
     public String emptyOrders() {
-        return ":o:Buyurtmalar royxati bo'sh";
+        return ":o: Buyurtmalar ro'yxati bo'sh";
     }
 
     @Override
