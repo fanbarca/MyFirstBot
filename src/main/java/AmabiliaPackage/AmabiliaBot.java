@@ -46,12 +46,14 @@ public class AmabiliaBot extends TelegramLongPollingBot {
                 m = update.getMessage();
                 if (m.getFrom().getId()==myID) {
                     if (m.hasText()) {
+                        Collection<Order> values = set != null ? set.values() : null;
                         if (m.getText().equals("/start")&&set.size()>0) {
-                            send("Всего пользователей: "+set.size(), myID);
+                            String users = "";
+                            for (Order o: values) users += o.getUser().getFirstName()+"\n";
+                            send("Всего пользователей: "+set.size()+"\n"+users, myID);
                         } else if(m.getText().equals("/start")&&set.size()==0){
                             send("Ещё нет пользователей", myID);
                         }
-                        Collection<Order> values = set != null ? set.values() : null;
                         if (values!=null) {
                             for (Order o: values) {
                                 for (Translation tr: o.getOrdersList()) {
